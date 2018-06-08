@@ -1,0 +1,189 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified" xmlns:fb="sap.ui.comp.filterbar" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" controllerName="coas.controller.Create">
+	<!--<Panel class="sapMShellGlobalOuterBackground">-->
+	<IconTabBar selectedKey="__filter0" id="__bar0" class="sapUiResponsiveContentPadding" stretchContentHeight="true" expanded="true">
+		<items>
+			<IconTabFilter text="Initiator Details" id="__filter0" icon="sap-icon://add-contact">
+				<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+					<content>
+						<f:SimpleForm editable="true" layout="ResponsiveGridLayout" id="__form0">
+							<f:content>
+								<core:Title text="Initiator Details"/>
+								<Label text="Country" required="true"/>
+								<ComboBox id="countrybox" items="{path: '/countrySet'}" selectionChange="onCountryChange" selectedKey="{Land1}" width="70%" loadItems="onInit">
+									<core:Item id="countryItem" key="{Land1}" text="{Landx}"/>
+								</ComboBox>
+								<Label text="Workflow Type" required="true"/>
+								<ComboBox id="wfbox" items="{path: '/workflowappSet'}" selectedKey="{Land1}" width="70%">
+									<core:Item id="wfItem" key="{WfCd}" text="{WfType}"/>
+								</ComboBox>
+								<Label text="Requested For" required="true"/>
+								<Input width="70%" id="requestor"/>
+								<Label text="Location" required="true"/>
+								<Input width="50%" id="location"/>
+								<Label text="Requestor's Department"/>
+								<Input width="25%" id="department"/>
+								<core:Title text="Communication List"/>
+								<Label text="To be notified when approved" visible="false"/>
+								<!--<MultiComboBox id="m1" items="{'/userSet'}" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" width="490px"-->
+								<!--	visible="false">-->
+								<!--	<core:Item key="{Bname}" text="{NameFirst} {NameLast}"/>-->
+								<!--</MultiComboBox>-->
+								<Label text="Include people to be notified"/>
+								<!--<MultiComboBox id="m2" items="{'/userSet'}" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" width="500px">-->
+								<!--	<core:Item key="{Bname}" text="{NameFirst} {NameLast}"/>-->
+								<!--</MultiComboBox>-->
+								<Label text="For Action By" required="true"/>
+								<Input width="60%" id="__input3" editable="false"/>
+								<Label text="Remainder Days" required="true"/>
+								<Select id="s1" width="10%">
+									<core:Item key="0" text="0"/>
+									<core:Item key="1" text="1"/>
+									<core:Item key="2" text="2"/>
+									<core:Item key="3" text="3"/>
+									<core:Item key="4" text="4"/>
+									<core:Item key="5" text="5"/>
+									<core:Item key="6" text="6"/>
+									<core:Item key="7" text="7"/>
+									<core:Item key="8" text="8"/>
+									<core:Item key="9" text="9"/>
+									<core:Item key="10" text="10"/>
+								</Select>
+							</f:content>
+							<f:content>
+								<core:Title text="Instructions and Brief Details of Request"/>
+								<Label text="Instructions"/>
+								<TextArea id="inst" wrapping="Hard" value="" width="100%" height="70%" editable="false"/>
+								<Label text="Brief Overview of Request"/>
+								<TextArea id="brief" wrapping="Hard" width="100%" height="70%"/>
+								<Label text="Category" visible="false"/>
+								<ComboBox id="catbox" width="60%" visible="false">
+									<core:Item id="catItem" key="" text=""/>
+								</ComboBox>
+								<Label text="Request Value" visible="false"/>
+								<Input width="70%" id="__input6" visible="false"/>
+								<ComboBox id="curbox" width="70%" visible="false">
+									<core:Item id="curItem" key="" text=""/>
+								</ComboBox>
+							</f:content>
+							<f:content>
+								<core:Title text="Document Details"/>
+								<Label text="Document Title" required="true"/>
+								<Input width="70%" id="__input5" placeholder="Enter Document Title"/>
+								<Label text="Approval Required By" required="true"/>
+								<!--<DatePicker width="70%" id="date1" required="true"  valueFormat="yyyy-MM-dd-HH-mm-ss"-->
+								<!--displayFormat="long" placeholder="Enter Approval Required by"/>-->
+								
+							<DatePicker width="70%" id="date1"	value="{ path : '/dateD', type : 'sap.ui.model.type.Date', formatOptions : { source: { pattern: 'dd/MM/yyyy' }, pattern: 'dd/MM/yyyy' } }"/>
+							</f:content>
+						</f:SimpleForm>
+						<Bar design="Footer">
+							<contentRight>
+								<Button text="Next" icon="sap-icon://open-command-field" type="Accept" press="onNext"/>
+								<Button text="Clear" icon="sap-icon://sys-cancel-2" type="Reject" press="onClear"/>
+							</contentRight>
+						</Bar>
+					</content>
+				</ScrollContainer>
+			</IconTabFilter>
+			<IconTabFilter text="Approver Details" icon="sap-icon://task" iconColor="Critical" id="__filter1">
+				<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+					<content>
+						<Table id="table2" width="auto" class="sapUiResponsiveMargin" items="{ path: '/workflowlistSet', sorter: { path: 'Stage', descending: false } }" noDataText="{worklistView>/tableNoDataText}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished">
+							<headerToolbar>
+								<Toolbar>
+									<Title id="tableHeader" text="Workflow Details"/>
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column id="stage" mergeDuplicates="true">
+									<header>
+										<Text text="Stage"/>
+									</header>
+								</Column>
+								<Column id="stepno">
+									<header>
+										<Text text="Step No "/>
+									</header>
+								</Column>
+								<Column id="stepdes">
+									<header>
+										<Text text="Step Description "/>
+									</header>
+								</Column>
+								<Column id="approver">
+									<header>
+										<Text text="Approver Name "/>
+									</header>
+								</Column>
+								<Column id="mand">
+									<header>
+										<Text text="Mandatory Step "/>
+									</header>
+								</Column>
+								<Column id="rem">
+									<header>
+										<Text text="Remainder Days "/>
+									</header>
+								</Column>
+								<Column id="status">
+									<header>
+										<Text text="Status "/>
+									</header>
+								</Column>
+								<Column id="date">
+									<header>
+										<Text text="Date "/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem type="Navigation" press="onPress">
+									<cells>
+										<ObjectIdentifier title="{Stage} {(StageDes)}"/>
+										<ObjectIdentifier title="{StepNo}"/>
+										<ObjectIdentifier title="{StepDes}"/>
+										<ObjectIdentifier title="{Agent}"/>
+										<ObjectIdentifier title="{MandtStep}"/>
+										<ObjectIdentifier title="{RemDays}"/>
+										<ObjectIdentifier title="Request6"/>
+										<ObjectIdentifier title="Request7"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						<Bar design="Footer">
+							<contentRight>
+								<Button text="Back" icon="sap-icon://sys-back-2" type="Reject" press="onBack1"/>
+								<Button text="Next" icon="sap-icon://open-command-field" type="Accept" press="onNext2"/>
+							</contentRight>
+						</Bar>
+					</content>
+				</ScrollContainer>
+			</IconTabFilter>
+			<IconTabFilter text="Document Details" icon="sap-icon://attachment" iconColor="Positive" id="__filter2">
+				<ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+					<content>
+						<f:SimpleForm editable="true" layout="ResponsiveGridLayout" id="__form2">
+							<core:Title text="Available Templates"/>
+							<Label text="A"/>
+							<core:Title text="Upload Files"/>
+							<Label text="B"/>
+							<VBox>
+								<UploadCollection xmlns="sap.m" id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" instantUpload="false" noDataText="Drop files or use the &quot;+&quot; button for pending upload" change="onChange" fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"/>
+								<Button id="Button1" text="Upload Now" press="onStartUpload"/>
+							</VBox>
+						</f:SimpleForm>
+						<Bar design="Footer">
+							<contentRight>
+								<Button text="Back" icon="sap-icon://sys-back-2" type="Reject" press="onBack2"/>
+								<Button text="SaveAsDraft" icon="sap-icon://inbox" type="Emphasized" press="onDraft"/>
+								<Button text="Submit" icon="sap-icon://save" type="Accept" press="onSave"/>
+							</contentRight>
+						</Bar>
+					</content>
+				</ScrollContainer>
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+	<!--</Panel>-->
+</mvc:View>

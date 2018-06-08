@@ -1,0 +1,200 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZCAOS_REQUEST_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="location" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Land1"/>
+                    <PropertyRef Name="LocationCd"/>
+                </Key>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LocationCd" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Loacation Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Location" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Long Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Landx" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="category" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Land1"/>
+                    <PropertyRef Name="WfCd"/>
+                    <PropertyRef Name="CategoryCd"/>
+                </Key>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="WfCd" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Workflow Code" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CategoryCd" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Category Code" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Category" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Long Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Landx" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WfType" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Workflow Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="currency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Land1"/>
+                    <PropertyRef Name="Waers"/>
+                </Key>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Ltext" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Long Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Landx" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="workflowconfig" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Request"/>
+                    <PropertyRef Name="Land1"/>
+                    <PropertyRef Name="WfCd"/>
+                    <PropertyRef Name="Stage"/>
+                    <PropertyRef Name="StepNo"/>
+                    <PropertyRef Name="Agent"/>
+                </Key>
+                <Property Name="Request" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Sales document" />
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" />
+                <Property Name="WfCd" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Workflow Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stage" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Stage No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StepNo" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Step No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StageDes" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Stage Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StepDes" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Step Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppTp" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Approval Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppSpecifi" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Approver Specification" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppLabel" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Approver Label" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Agent" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MandtStep" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Mandatory Step" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RemDays" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Reminder Days" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="workflowapp" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Land1"/>
+                    <PropertyRef Name="WfCd"/>
+                </Key>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WfCd" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Workflow Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WfType" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Workflow Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InitTxt" Type="Edm.String" Nullable="false" MaxLength="10000" sap:label="Initiator Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppTxt" Type="Edm.String" Nullable="false" MaxLength="10000" sap:label="Initiator Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReqEqApp" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Requestor Can Be App" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="VisVal" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Visibility Of Value" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Wears" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="ActSpec" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Specification" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ActByNm" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ActRemDays" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Reminder Days" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="wftolist" Relationship="ZCAOS_REQUEST_SRV.wftolist" FromRole="FromRole_wftolist" ToRole="ToRole_wftolist"/>
+            </EntityType>
+            <EntityType Name="country" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Land1"/>
+                </Key>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Landx" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="countrytowf" Relationship="ZCAOS_REQUEST_SRV.countrytowf" FromRole="FromRole_countrytowf" ToRole="ToRole_countrytowf"/>
+            </EntityType>
+            <EntityType Name="user" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Bname"/>
+                </Key>
+                <Property Name="Bname" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NameFirst" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="First name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NameLast" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Last name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NameTextc" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Complete name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="workflowlist" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Land1"/>
+                    <PropertyRef Name="WfCd"/>
+                    <PropertyRef Name="Stage"/>
+                    <PropertyRef Name="StepNo"/>
+                    <PropertyRef Name="AppTp"/>
+                    <PropertyRef Name="Agent"/>
+                </Key>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WfCd" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Workflow Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Stage" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Stage No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StepNo" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Step No" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StageDes" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Stage Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StepDes" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Step Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppTp" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Approval Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppSpecifi" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Approver Specification" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AppLabel" Type="Edm.String" Nullable="false" MaxLength="255" sap:label="Approver Label" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Agent" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="User Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MandtStep" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Mandatory Step" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RemDays" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Reminder Days" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="request" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Request"/>
+                </Key>
+                <Property Name="Request" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Sales document" />
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Country" />
+                <Property Name="Landx" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Name" />
+                <Property Name="WfCd" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Workflow Code" />
+                <Property Name="WfType" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Workflow Type" />
+                <Property Name="Initiator" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Complete name"/>
+                <Property Name="InitiatorId" Type="Edm.String"  MaxLength="30" sap:label="Branching name" />
+                <Property Name="Location" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Long Text" />
+                <Property Name="Department" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Long Text" />
+                <Property Name="DocTitle" Type="Edm.String"  MaxLength="40" sap:label="Long Text" />
+                <Property Name="Category" Type="Edm.String"  MaxLength="40" sap:label="Long Text" />
+                <Property Name="Amount" Type="Edm.Decimal"  Precision="14" Scale="3" sap:label="Amount" />
+                <Property Name="Currency" Type="Edm.String"  MaxLength="5" sap:label="Currency" sap:semantics="currency-code"/>
+                <Property Name="AppDate" Type="Edm.DateTime"  Precision="7" sap:label="Date" />
+                <Property Name="BriefText" Type="Edm.String"  MaxLength="10000" sap:label="Brief overview of Request Text ID" />
+                <Property Name="ActionBy" Type="Edm.String" Nullable="false" MaxLength="80" sap:label="Complete name" />
+                <Property Name="ActionId" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Branching name" />
+                <Property Name="Status" Type="Edm.String"  MaxLength="40" sap:label="Long Text" />
+                <Property Name="Savedraft" Type="Edm.String"  MaxLength="1" sap:label="Save or Save Draft" />
+                <Property Name="AssignedOn" Type="Edm.DateTime"  Precision="7" sap:label="Date" />
+                <Property Name="AssignedAt" Type="Edm.Time"  Precision="0" sap:label="Time" />
+                <Property Name="ActionOn" Type="Edm.DateTime"  Precision="7" sap:label="Date" />
+                <Property Name="ActionAt" Type="Edm.Time" Nullable="false" Precision="0" sap:label="Time" />
+            </EntityType>
+            <Association Name="wftolist" sap:content-version="1">
+                <End Type="ZCAOS_REQUEST_SRV.workflowapp" Multiplicity="1" Role="FromRole_wftolist"/>
+                <End Type="ZCAOS_REQUEST_SRV.workflowlist" Multiplicity="*" Role="ToRole_wftolist"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_wftolist">
+                        <PropertyRef Name="WfCd"/>
+                        <PropertyRef Name="Land1"/>
+                    </Principal>
+                    <Dependent Role="ToRole_wftolist">
+                        <PropertyRef Name="WfCd"/>
+                        <PropertyRef Name="Land1"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="countrytowf" sap:content-version="1">
+                <End Type="ZCAOS_REQUEST_SRV.country" Multiplicity="1" Role="FromRole_countrytowf"/>
+                <End Type="ZCAOS_REQUEST_SRV.workflowapp" Multiplicity="*" Role="ToRole_countrytowf"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_countrytowf">
+                        <PropertyRef Name="Land1"/>
+                    </Principal>
+                    <Dependent Role="ToRole_countrytowf">
+                        <PropertyRef Name="Land1"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZCAOS_REQUEST_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="locationSet" EntityType="ZCAOS_REQUEST_SRV.location" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="categorySet" EntityType="ZCAOS_REQUEST_SRV.category" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="currencySet" EntityType="ZCAOS_REQUEST_SRV.currency" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="workflowconfigSet" EntityType="ZCAOS_REQUEST_SRV.workflowconfig" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="workflowappSet" EntityType="ZCAOS_REQUEST_SRV.workflowapp" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="countrySet" EntityType="ZCAOS_REQUEST_SRV.country" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="userSet" EntityType="ZCAOS_REQUEST_SRV.user" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="workflowlistSet" EntityType="ZCAOS_REQUEST_SRV.workflowlist" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="requestSet" EntityType="ZCAOS_REQUEST_SRV.request"  sap:content-version="1"/>
+                <AssociationSet Name="countrytowfSet" Association="ZCAOS_REQUEST_SRV.countrytowf" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="countrySet" Role="FromRole_countrytowf"/>
+                    <End EntitySet="workflowappSet" Role="ToRole_countrytowf"/>
+                </AssociationSet>
+                <AssociationSet Name="wftolistSet" Association="ZCAOS_REQUEST_SRV.wftolist" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="workflowappSet" Role="FromRole_wftolist"/>
+                    <End EntitySet="workflowlistSet" Role="ToRole_wftolist"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZCAOS_REQUEST_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZCAOS_REQUEST_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

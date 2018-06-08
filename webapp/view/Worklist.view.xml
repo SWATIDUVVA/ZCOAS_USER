@@ -1,0 +1,51 @@
+<mvc:View controllerName="coas.controller.Worklist" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:uc="sap.ui.unified.calendar"
+	xmlns:t="sap.ui.table">
+	<semantic:FullscreenPage id="page" semanticRuleSet="Optimized" title="{i18n>worklistViewTitle}">
+		<semantic:content>
+			<Table id="table" width="auto" class="sapUiResponsiveMargin" items="{ path: '/requestSet', sorter: { path: 'Request', descending: false } }"
+				noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+				<headerToolbar>
+					<Toolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>
+						<ToolbarSpacer/>
+						<Button text="Create Request" width="15%" id="__button1" type="Emphasized" icon="sap-icon://request" press="onAdd" textDirection="LTR"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="Rquest">
+						<Text text="Request" id="Reqno"/>
+					</Column>
+					<Column id="Landx">
+						<Label text="Country"/>
+					</Column>
+					<Column id="WfType">
+						<Label text="Workflow Type"/>
+					</Column>
+					<Column id="ReqId">
+						<Label text="Requestor"/>
+					</Column>
+					<Column id="Approver">
+						<Label text="Approver"/>
+					</Column>
+					<Column id="Appdt">
+						<Label text="Approval Date"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onPress">
+						<cells>
+							<Text text="{Request}"/>
+							<Text text="{Landx}"/>
+							<Text text="{WfType}"/>
+							<Text text="{Initiator}"/>
+							<Text text="{Initiator}"/>
+							<Text text="{ path: 'AppDate' , type: 'sap.ui.model.type.Date' , formatOptions: { pattern: 'dd/MM/yyyy' }}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</mvc:View>
